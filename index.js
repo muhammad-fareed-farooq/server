@@ -8,7 +8,7 @@ const express = require("express");
 const app = express();
 
 let corsOption = {
-  origin: "http://192.168.100.51:5000",
+  origin: "*",
   methods: "GET,POST",
   credentials: true,
 };
@@ -16,6 +16,10 @@ let corsOption = {
 app.use(cors(corsOption));
 
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
 database_Connect();
 
